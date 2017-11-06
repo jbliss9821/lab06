@@ -99,6 +99,26 @@ void test_suite::run_tests()
 	{
 		std::cout << "Failed.  Addback x 50, remove back 1.  Expected 49.  Got " << test_9_out << ".\n";
 	}
+
+	std::cout << "\nTest 10: ";
+	if(test10())
+	{
+		std::cout << "Passed.  removeFront saw non-empty list as non-empty and returned true for removal.\n";
+	}
+	else
+	{
+		std::cout << "Failed.  removeFront saw non-empty list as empty and returned false for removal.\n";
+	}
+
+	std::cout << "\nTest 11: ";
+	if(test11())
+	{
+		std::cout << "Passed.  removeBack saw non-empty list as non-empty and returned true for removal.\n";
+	}
+	else
+	{
+		std::cout << "Failed.  removeBack saw non-empty list as empty and returned false for removal.\n";
+	}
 }
 
 bool test_suite::test1()
@@ -188,8 +208,6 @@ int test_suite::test6()
 		list.addFront(10);
 	}
 
-	bool test = list.removeFront();
-
 	int test_size_vec = list.toVector().size();
 
 	return test_size_vec;
@@ -243,4 +261,30 @@ int test_suite::test9()
 	int test_size_vec = list.toVector().size();
 
 	return test_size_vec;
+}
+
+bool test_suite::test10()
+{
+	LinkedListOfInts list;
+	for (int i = 0; i < 50; i++)
+	{
+		list.addFront(10);
+	}
+
+	bool test = list.removeFront();
+	
+	return test;
+}
+
+bool test_suite::test11()
+{
+	LinkedListOfInts list;
+	for (int i = 0; i < 50; i++)
+	{
+		list.addFront(10);
+	}
+
+	bool test = list.removeBack();
+	
+	return test;
 }

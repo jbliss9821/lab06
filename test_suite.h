@@ -20,6 +20,8 @@ class test_suite
 		bool test7();
 		bool test8();
 		int test9();
+		bool test10();
+		bool test11();
 	
 	private:
 		
