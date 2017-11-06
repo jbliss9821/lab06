@@ -119,6 +119,66 @@ void test_suite::run_tests()
 	{
 		std::cout << "Failed.  removeBack saw non-empty list as empty and returned false for removal.\n";
 	}
+
+	std::cout << "\nTest12: ";//search for int not in list
+	if(test12())
+	{
+		std::cout << "Passed.  search returned false for int not in list.\n";
+	}
+	else
+	{
+		std::cout << "Failed.  search returned true for in not in list.\n";
+	}
+
+	std::cout << "\nTest13: ";//search for 0 - 99
+	if(test13())
+	{
+		std::cout << "Passed.  All values, 0-99, found in list populated with 0-99.\n";
+	}
+	else
+	{
+		std::cout << "Failed.  Not all values found in list 0-99.\n";
+	}
+
+	std::cout << "\nTest14: ";//search on empty list
+	if(test14())
+	{
+		std::cout << "Passed.  search returned false for empty list.\n";
+	}
+	else
+	{
+		std::cout << "Failed.  search returned true for empty list.\n";
+	}
+
+	std::cout << "\nTest15: ";//search for int in the list
+	if(test15())
+	{
+		std::cout << "Passed.  search returned true for finding 50 in list 0-99.\n";
+	}
+	else
+	{
+		std::cout << "Failed.  search returned false for finding 50 in list 0-99.\n";
+	}
+
+	std::cout << "\nTest16: ";//removefront on empty list
+	if(!test16())
+	{
+		std::cout << "Passed.  returned false for removeFront on empty list.\n";
+	}
+	else
+	{
+		std::cout << "Failed.  returned true for removeFront on empty list.\n";
+	}
+
+	std::cout << "\nTest17: ";//search for int in the list
+	if(!test17())
+	{
+		std::cout << "Passed.  returned false for removeBack on empty list.\n";
+	}
+	else
+	{
+		std::cout << "Failed.  returned true for removeBack on empty list.\n";
+	}
 }
 
 //isempty on initial
@@ -302,4 +362,83 @@ bool test_suite::test11()
 	bool test = list.removeBack();
 	
 	return test;
+}
+
+//search for int not in list
+bool test_suite::test12()
+{
+	LinkedListOfInts list;
+
+	for(int i = 0; i < 100; i++)
+	{
+		list.addFront(i);
+	}
+
+	bool search_test = list.search(100000);//true if finds 10000, false if not found
+
+	return(!search_test);//true if didn't find the value, false if found
+}
+
+//search for 0-99 in list populated with 0-99
+bool test_suite::test13()
+{
+	LinkedListOfInts list;
+
+	for(int i = 0; i < 100; i++)
+	{
+		list.addFront(i);
+	}
+
+	bool search_test = true;
+
+	for(int i = 0; i < 100; i++)
+	{
+		search_test = list.search(i); //search_test returns true if i is in list, false else
+		if (!search_test)
+		{
+			std::cout << "Looked for " << i << " but couldn't be found.\n";
+			return false;
+		}
+	}
+	
+	return true;
+}
+
+//search on empty
+bool test_suite::test14()
+{
+	LinkedListOfInts list;
+
+	bool search_test = list.search(100000);//true if finds 10000, false if not found
+
+	return(!search_test);//true if didn't find the value, false if found
+}
+
+//search for specific int in list
+bool test_suite::test15()
+{
+	LinkedListOfInts list;
+
+	for(int i = 0; i < 100; i++)
+	{
+		list.addFront(i);
+	}
+
+	return (list.search(50));//true if finds 50, false if not found
+}
+
+//removefront on empty list
+bool test_suite::test16()
+{
+	LinkedListOfInts list;
+
+	return (list.removeFront());
+}
+
+//removeback on empty list
+bool test_suite::test17()
+{
+	LinkedListOfInts list;
+
+	return (list.removeBack());
 }
