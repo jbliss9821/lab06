@@ -179,20 +179,30 @@ void test_suite::run_tests()
 	{
 		std::cout << "Failed.  returned true for removeBack on empty list.\n";
 	}
+
+	std::cout << "\nTest18: ";//search for 10 when multiple 10's in list
+	if(test18())
+	{
+		std::cout << "Passed.  search returned true when searching for 10 in list that contains two 10's.\n";
+	}
+	else
+	{
+		std::cout << "Failed.  search returned false when searching for 10 in list that contains two 10's.\n";
+	}
 }
 
 //isempty on initial
-bool test_suite::test1() 
+bool test_suite::test1()
 {
 	LinkedListOfInts list;
-	
+
 	bool test = list.isEmpty();
 
 	if(test)
 	{
 		return true;
 	}
-	
+
 	return false;
 }
 
@@ -212,7 +222,7 @@ bool test_suite::test2()
 	{
 		return true;
 	}
-	
+
 	return false;
 }
 
@@ -220,7 +230,7 @@ bool test_suite::test2()
 bool test_suite::test3()
 {
 	LinkedListOfInts list;
-	
+
 	int test_size = list.size();
 	int test_size_vec = list.toVector().size();
 
@@ -228,7 +238,7 @@ bool test_suite::test3()
 	{
 		return true;
 	}
-	
+
 	return false;
 }
 
@@ -237,7 +247,7 @@ bool test_suite::test4()
 {
 	LinkedListOfInts list;
 	list.addFront(10);
-	
+
 	int test_size = list.size();
 	int test_size_vec = list.toVector().size();
 
@@ -245,7 +255,7 @@ bool test_suite::test4()
 	{
 		return true;
 	}
-	
+
 	return false;
 }
 
@@ -257,7 +267,7 @@ bool test_suite::test5()
 	{
 		list.addFront(10);
 	}
-	
+
 	int test_size = list.size();
 	int test_size_vec = list.toVector().size();
 
@@ -265,7 +275,7 @@ bool test_suite::test5()
 	{
 		return true;
 	}
-	
+
 	return false;
 }
 
@@ -288,7 +298,7 @@ bool test_suite::test7()
 {
 	LinkedListOfInts list;
 	list.addBack(10);
-	
+
 	int test_size = list.size();
 	int test_size_vec = list.toVector().size();
 
@@ -296,7 +306,7 @@ bool test_suite::test7()
 	{
 		return true;
 	}
-	
+
 	return false;
 }
 
@@ -308,7 +318,7 @@ bool test_suite::test8()
 	{
 		list.addBack(10);
 	}
-	
+
 	int test_size = list.size();
 	int test_size_vec = list.toVector().size();
 
@@ -316,7 +326,7 @@ bool test_suite::test8()
 	{
 		return true;
 	}
-	
+
 	return false;
 }
 
@@ -330,7 +340,7 @@ int test_suite::test9()
 	}
 
 	list.removeBack();
-	
+
 	int test_size_vec = list.toVector().size();
 
 	return test_size_vec;
@@ -346,7 +356,7 @@ bool test_suite::test10()
 	}
 
 	bool test = list.removeFront();
-	
+
 	return test;
 }
 
@@ -360,7 +370,7 @@ bool test_suite::test11()
 	}
 
 	bool test = list.removeBack();
-	
+
 	return test;
 }
 
@@ -400,7 +410,7 @@ bool test_suite::test13()
 			return false;
 		}
 	}
-	
+
 	return true;
 }
 
@@ -441,4 +451,14 @@ bool test_suite::test17()
 	LinkedListOfInts list;
 
 	return (list.removeBack());
+}
+
+//search when multiples of search int
+bool test_suite::test18()
+{
+	LinkedListOfInts list;
+	list.addFront(10);
+	list.addFront(10);
+
+	return(list.search(10));
 }

@@ -8,7 +8,7 @@
 
 class test_suite
 {
-	public: 
+	public:
 		test_suite();
 		void run_tests();
 		bool test1();
@@ -28,9 +28,10 @@ class test_suite
 		bool test15();
 		bool test16();
 		bool test17();
-	
+		bool test18();
+
 	private:
-		
+
 };
 
 #endif
