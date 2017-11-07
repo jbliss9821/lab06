@@ -1,0 +1,3 @@
+Bugs Discovered:
+1. isEmpty always return true, causing removeFront and removeBack to never remove since they depend on isEmpty
+	Can't seem to find anything else.  removeFront and removeBack don't work, but that is because they return false for removal, assumed to be due to the fact that they rely on isEmpty, which always returns true, so the removal is never actually attempted.
